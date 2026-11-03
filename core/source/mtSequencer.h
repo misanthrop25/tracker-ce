@@ -308,6 +308,7 @@ class Sequencer
             {
                 int8_t note;        // = STEP_NOTE_EMPTY;
                 uint8_t instrument; // = 0;
+                uint8_t chance;     // = 0; Master gate for FX1/FX2 (0-174)
                 // FX
                 struct strFx
                 {

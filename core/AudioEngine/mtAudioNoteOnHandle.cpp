@@ -79,7 +79,8 @@ AUDIO_CORE_RAM uint8_t playerEngine ::noteOn(uint8_t instr_idx,
                                              uint8_t fx1_id,
                                              uint8_t fx1_val,
                                              uint8_t fx2_id,
-                                             uint8_t fx2_val)
+                                             uint8_t fx2_val,
+                                             uint8_t chance)
 {
     if (mtProject.instrument[instr_idx].isActive != 1)
         return 0;
@@ -147,8 +148,15 @@ AUDIO_CORE_RAM uint8_t playerEngine ::noteOn(uint8_t instr_idx,
         }
     }
 
-    seqFx(fx2_id, fx2_val, 1); // mniej wazny najpierw
-    seqFx(fx1_id, fx1_val, 0);
+    // Check master chance gate before applying FX1/FX2
+    uint8_t currentTrack = sequencer.getCurrentTrack();
+    bool chanceGatePassed = sequencer.evaluateChanceFx(currentTrack, chance);
+
+    if (chanceGatePassed)
+    {
+        seqFx(fx2_id, fx2_val, 1); // mniej wazny najpierw
+        seqFx(fx1_id, fx1_val, 0);
+    }
 
     bool isFx1Slide = (fx1_id == Sequencer::strFxConsts::FX_TYPE_SLIDE_UP) ||
                       (fx1_id == Sequencer::strFxConsts::FX_TYPE_SLIDE_DOWN);
