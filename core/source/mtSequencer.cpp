@@ -2466,7 +2466,11 @@ AUDIO_CORE_RAM void Sequencer::sendNoteOn(uint8_t track,
                                        step->fx[0].value,
                                        step->fx[1].type,
                                        step->fx[1].value,
+#ifdef TRACKER_ORIGINAL
                                        step->chance,
+#else
+                                       0,
+#endif
                                        track);
     }
 }

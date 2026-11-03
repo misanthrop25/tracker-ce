@@ -62,8 +62,10 @@ endif
 ifeq ($(PRODUCT), MINI)
 DEFINES+=-DTRACKER_MINI
 else ifeq ($(PRODUCT), ORIGINAL)
+DEFINES+=-DTRACKER_ORIGINAL
 else ifeq ($(PRODUCT), PLUS)
-else 
+DEFINES+=-DTRACKER_PLUS
+else
 $(error Invalid PRODUCT value $(PRODUCT))
 endif
 

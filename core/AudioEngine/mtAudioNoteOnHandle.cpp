@@ -149,8 +149,13 @@ AUDIO_CORE_RAM uint8_t playerEngine ::noteOn(uint8_t instr_idx,
         }
     }
 
+#ifdef TRACKER_ORIGINAL
     // Check master chance gate before applying FX1/FX2
     bool chanceGatePassed = sequencer.evaluateChanceFx(track, chance);
+#else
+    // Master chance gate not available on this product
+    bool chanceGatePassed = true;
+#endif
 
     if (chanceGatePassed)
     {
