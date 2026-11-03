@@ -941,6 +941,8 @@ class Sequencer
         player.preRollMetronomeEndCalback = preRollMetronomeEndCalback;
     };
 
+    bool evaluateChanceFx(uint8_t row, uint8_t value); // Public for audio engine use
+
   private:
     static constexpr int kTicksInStep = 576;
     static constexpr size_t kExternalTempoCounterSize = 24 * 2;
@@ -972,7 +974,6 @@ class Sequencer
     void reset_actual_pos(void);
     void reset_actual_pos(uint8_t row, uint8_t delta = 0);
     void resetChanceState(void);
-    bool evaluateChanceFx(uint8_t row, uint8_t value);
 
     void play_microStep(int row);
     void inc_uStep(uint8_t row);
