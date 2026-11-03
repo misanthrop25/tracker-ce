@@ -701,7 +701,7 @@ AUDIO_CORE_RAM void playerEngine::handleFxNoteOnFilter()
     //***** resonance
     if (mtProject.instrument[currentInstrument_idx].filterEnable)
     {
-        for (int channel = 0; channel < filterPtr.size(); channel++)
+        for (size_t channel = 0; channel < filterPtr.size(); channel++)
         {
             filterPtr[channel]->resonance(mtProject.instrument[currentInstrument_idx].resonance +
                                           RESONANCE_OFFSET);
