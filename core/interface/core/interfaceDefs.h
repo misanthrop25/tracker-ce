@@ -444,6 +444,7 @@ class InterfaceGlobals
                                                                   "B - Band-pass",
                                                                   "H - High-pass",
                                                                   "s - Delay Send",
+                                                                  "u - Delay Time",
                                                                   "t - Reverb Send",
                                                                   "E - Bit Depth",
                                                                   "U - Tune",
