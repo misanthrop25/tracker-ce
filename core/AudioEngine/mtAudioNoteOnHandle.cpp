@@ -80,7 +80,8 @@ AUDIO_CORE_RAM uint8_t playerEngine ::noteOn(uint8_t instr_idx,
                                              uint8_t fx1_val,
                                              uint8_t fx2_id,
                                              uint8_t fx2_val,
-                                             uint8_t chance)
+                                             uint8_t chance,
+                                             uint8_t track)
 {
     if (mtProject.instrument[instr_idx].isActive != 1)
         return 0;
