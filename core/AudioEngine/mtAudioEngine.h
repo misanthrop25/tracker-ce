@@ -377,6 +377,7 @@ class playerEngine
         filterType,
         filterEnable,
         delaySend,
+        delayTime,
         reverbSend,
         overdrive,
         bitDepth,
@@ -418,6 +419,7 @@ class playerEngine
         uint8_t filterType;
         uint8_t filterEnable;
         uint8_t delaySend;
+        uint16_t delayTime;
         uint8_t reverbSend;
         int16_t panning;
         uint8_t overdrive;
@@ -469,6 +471,7 @@ class playerEngine
         uint8_t filterType;
         uint8_t filterEnable;
         uint8_t delaySend;
+        uint16_t delayTime;
         uint8_t reverbSend;
         int16_t panning;
         int8_t tune;
@@ -505,6 +508,7 @@ class playerEngine
         int8_t panning;
         int8_t tune;
         int8_t delaySend;
+        int16_t delayTime;
         int8_t reverbSend;
         int8_t cutoff;
         int16_t wavetablePosition;
@@ -682,6 +686,7 @@ class playerEngine
     inline void handleUpdateRefreshCutoff();
     inline void handleUpdateRefreshResonance();
     void handleUpdateRefreshDelay();
+    void handleUpdateRefreshDelayTime();
     void handleUpdateRefreshReverb();
     inline void handleUpdateRefreshOverdrive();
     inline void handleUpdateRefreshBitDepth();
@@ -706,6 +711,7 @@ class playerEngine
     void fxPanning(uint8_t fx_val, uint8_t fx_n);
     void fxBitDepth(uint8_t fx_val, uint8_t fx_n);
     void fxDelaySend(uint8_t fx_val, uint8_t fx_n);
+    void fxDelayTime(uint8_t fx_val, uint8_t fx_n);
     void fxReverbSend(uint8_t fx_val, uint8_t fx_n);
     void fxOverdrive(uint8_t fx_val, uint8_t fx_n);
     void fxReversePlayback(uint8_t fx_val, uint8_t fx_n);
@@ -745,6 +751,7 @@ class playerEngine
     void endFxPanning(uint8_t fx_n);
     void endFxBitDepth(uint8_t fx_n);
     void endFxDelaySend(uint8_t fx_n);
+    void endFxDelayTime(uint8_t fx_n);
     void endFxReverbSend(uint8_t fx_n);
     void endFxOverdrive(uint8_t fx_n);
     void endFxReversePlayback(uint8_t fx_n);

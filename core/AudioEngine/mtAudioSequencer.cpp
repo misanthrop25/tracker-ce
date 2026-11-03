@@ -38,6 +38,7 @@ AUDIO_CORE_RAM void playerEngine::seqFx(uint8_t fx_id, uint8_t fx_val, uint8_t f
         case Sequencer::strFxConsts::FX_TYPE_PANNING: fxPanning(fx_val, fx_n); break;
         case Sequencer::strFxConsts::FX_TYPE_BIT_DEPTH: fxBitDepth(fx_val, fx_n); break;
         case Sequencer::strFxConsts::FX_TYPE_DELAY_SEND: fxDelaySend(fx_val, fx_n); break;
+        case Sequencer::strFxConsts::FX_TYPE_DELAY_TIME: fxDelayTime(fx_val, fx_n); break;
         case Sequencer::strFxConsts::FX_TYPE_REVERB_SEND: fxReverbSend(fx_val, fx_n); break;
         case Sequencer::strFxConsts::FX_TYPE_REVERSE_PLAYBACK:
             fxReversePlayback(fx_val, fx_n);
@@ -98,6 +99,7 @@ AUDIO_CORE_RAM void playerEngine::endFx(uint8_t fx_id, uint8_t fx_n)
         case Sequencer::strFxConsts::FX_TYPE_PANNING: endFxPanning(fx_n); break;
         case Sequencer::strFxConsts::FX_TYPE_BIT_DEPTH: endFxBitDepth(fx_n); break;
         case Sequencer::strFxConsts::FX_TYPE_DELAY_SEND: endFxDelaySend(fx_n); break;
+        case Sequencer::strFxConsts::FX_TYPE_DELAY_TIME: endFxDelayTime(fx_n); break;
         case Sequencer::strFxConsts::FX_TYPE_REVERB_SEND: endFxReverbSend(fx_n); break;
         case Sequencer::strFxConsts::FX_TYPE_REVERSE_PLAYBACK: endFxReversePlayback(fx_n); break;
         case Sequencer::strFxConsts::FX_TYPE_OVERDRIVE: endFxOverdrive(fx_n); break;
@@ -332,6 +334,54 @@ void playerEngine::fxReverbSend(uint8_t fx_val, uint8_t fx_n)
       1;
 
     setRefreshBit(REVERB_SEND_MASK);
+}
+
+void playerEngine::fxDelayTime(uint8_t fx_val, uint8_t fx_n)
+{
+    uint8_t otherFx_n = !fx_n;
+
+    // Map 0-255 to 10-1000 ms
+    constexpr uint16_t DELAY_TIME_MIN = 10;
+    constexpr uint16_t DELAY_TIME_MAX = 1000;
+
+    uint16_t delayTimeMs = mapClamped<uint16_t>(fx_val, 0, 255, DELAY_TIME_MIN, DELAY_TIME_MAX);
+
+    if (fx_n == MOST_SIGNIFICANT_FX)
+    {
+        currentSeqModValues.delayTime = delayTimeMs;
+    }
+    else if (fx_n == LEAST_SIGNIFICANT_FX)
+    {
+        if (!trackControlParameter[(int)controlType::sequencerMode + otherFx_n]
+                                  [(int)parameterList::delayTime])
+        {
+            currentSeqModValues.delayTime = delayTimeMs;
+        }
+    }
+    trackControlParameter[(int)controlType::sequencerMode + fx_n][(int)parameterList::delayTime] = 1;
+
+    setRefreshBit(DELAY_TIME_MASK);
+}
+
+void playerEngine::endFxDelayTime(uint8_t fx_n)
+{
+    uint8_t otherFx_n = !fx_n;
+
+    trackControlParameter[(int)controlType::sequencerMode + fx_n][(int)parameterList::delayTime] = 0;
+
+    if (fx_n == MOST_SIGNIFICANT_FX)
+    {
+        if (trackControlParameter[(int)controlType::sequencerMode + otherFx_n]
+                                 [(int)parameterList::delayTime])
+        {
+            constexpr uint16_t DELAY_TIME_MIN = 10;
+            constexpr uint16_t DELAY_TIME_MAX = 1000;
+            uint16_t delayTimeMs =
+              mapClamped<uint16_t>(lastSeqVal[otherFx_n], 0, 255, DELAY_TIME_MIN, DELAY_TIME_MAX);
+            currentSeqModValues.delayTime = delayTimeMs;
+            setRefreshBit(DELAY_TIME_MASK);
+        }
+    }
 }
 
 void playerEngine::fxOverdrive(uint8_t fx_val, uint8_t fx_n)

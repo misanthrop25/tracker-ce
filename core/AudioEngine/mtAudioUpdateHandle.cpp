@@ -56,6 +56,7 @@ AUDIO_CORE_RAM void playerEngine::update()
         handleUpdateRefreshVolume();
         handleUpdateRefreshResonance();
         handleUpdateRefreshDelay();
+        handleUpdateRefreshDelayTime();
         handleUpdateRefreshReverb();
         handleUpdateRefreshOverdrive();
         handleUpdateRefreshBitDepth();
@@ -443,6 +444,38 @@ void playerEngine::handleUpdateRefreshDelay()
         else
         {
             modDelaySend(AMP_MUTED);
+        }
+    }
+}
+
+void playerEngine::handleUpdateRefreshDelayTime()
+{
+    if (refreshRegister & DELAY_TIME_MASK)
+    {
+        refreshRegister &= (~DELAY_TIME_MASK);
+
+        uint16_t localDelayTime = 0;
+
+        if (trackControlParameter[(int)controlType::sequencerMode][(int)parameterList::delayTime] ||
+            trackControlParameter[(int)controlType::sequencerMode2][(int)parameterList::delayTime])
+        {
+            localDelayTime = currentSeqModValues.delayTime;
+        }
+        else
+        {
+            localDelayTime = engine.getDelayTime();
+        }
+
+        if (trackControlParameter[(int)controlType::performanceMode][(int)parameterList::delayTime])
+        {
+            localDelayTime =
+              clamp<uint16_t>((uint16_t)localDelayTime + (uint16_t)performanceMod.delayTime, 10u, 1000u);
+        }
+
+        if (((muteState == MUTE_DISABLE) && (onlyDelayMuteState == MUTE_DISABLE)) ||
+            ((engine.forceDelaySend == 1) && !mtProject.values.trackMute[nChannel]))
+        {
+            engine.setDelayTime(localDelayTime);
         }
     }
 }
