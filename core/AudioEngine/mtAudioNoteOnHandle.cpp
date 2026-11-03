@@ -149,8 +149,7 @@ AUDIO_CORE_RAM uint8_t playerEngine ::noteOn(uint8_t instr_idx,
     }
 
     // Check master chance gate before applying FX1/FX2
-    uint8_t currentTrack = sequencer.getCurrentTrack();
-    bool chanceGatePassed = sequencer.evaluateChanceFx(currentTrack, chance);
+    bool chanceGatePassed = sequencer.evaluateChanceFx(track, chance);
 
     if (chanceGatePassed)
     {

@@ -280,7 +280,8 @@ class playerEngine
                    uint8_t fx1_val,
                    uint8_t fx2_id,
                    uint8_t fx2_val,
-                   uint8_t chance = 0); // Master chance gate for FX1/FX2 (0-174)
+                   uint8_t chance = 0,
+                   uint8_t track = 0); // Master chance gate for FX1/FX2 (0-174)
     void noteOff(int8_t option = -4);
     void setStepVelocity(int8_t velocity);
     void clean();
