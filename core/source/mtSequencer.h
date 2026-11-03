@@ -129,7 +129,6 @@ class Sequencer
             FX_TYPE_OFF,
             FX_TYPE_MICROMOVE,
             FX_TYPE_ROLL,
-            FX_TYPE_CHANCE,
             FX_TYPE_RANDOM_NOTE,
             FX_TYPE_RANDOM_INSTRUMENT,
             FX_TYPE_RANDOM_VOLUME,

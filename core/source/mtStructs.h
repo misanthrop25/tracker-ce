@@ -91,7 +91,7 @@ static constexpr int kAllTracks = kSampleTracks + kMidiTracks;
 
 static constexpr int k16TracksPatternSize_v5 = 12336;
 static constexpr int k12TracksPatternSize_v5 = 9260;
-static constexpr int k16TracksPatternSize = 16432;
+static constexpr int k16TracksPatternSize = 18480; // Updated: +2048 bytes for new 'chance' field in strStep (16 tracks * 128 steps)
 static constexpr int k12TracksPatternSize = 12332;
 
 static constexpr int kMaxMidiTracksInTrackers =
