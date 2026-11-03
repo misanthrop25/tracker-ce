@@ -394,6 +394,7 @@ class InterfaceGlobals
         Sequencer::strFxConsts::enFxType::FX_TYPE_DELAY_SEND,
         Sequencer::strFxConsts::enFxType::FX_TYPE_DELAY_TIME,
         Sequencer::strFxConsts::enFxType::FX_TYPE_REVERB_SEND,
+        Sequencer::strFxConsts::enFxType::FX_TYPE_CHANCE,
         Sequencer::strFxConsts::enFxType::FX_TYPE_BIT_DEPTH,
         Sequencer::strFxConsts::enFxType::FX_TYPE_TUNE,
         Sequencer::strFxConsts::enFxType::FX_TYPE_SLIDE_UP,
@@ -446,6 +447,7 @@ class InterfaceGlobals
                                                                   "s - Delay Send",
                                                                   "u - Delay Time",
                                                                   "t - Reverb Send",
+                                                                  "c - Chance",
                                                                   "E - Bit Depth",
                                                                   "U - Tune",
                                                                   "F - Slide up",
@@ -503,6 +505,7 @@ class InterfaceGlobals
                                                                        "Delay Send",
                                                                        "Delay Time",
                                                                        "Reverb Send",
+                                                                       "Chance",
                                                                        "Bit Depth",
                                                                        "Tune",
                                                                        "Slide up",
@@ -538,7 +541,7 @@ class InterfaceGlobals
         &fxNames[29][0], &fxNames[30][0], &fxNames[31][0], &fxNames[32][0], &fxNames[33][0],
         &fxNames[34][0], &fxNames[35][0], &fxNames[36][0], &fxNames[37][0], &fxNames[38][0],
         &fxNames[39][0], &fxNames[40][0], &fxNames[41][0], &fxNames[42][0],
-        &fxNames[43][0], &fxNames[44][0], &fxNames[45][0], &fxNames[46][0]
+        &fxNames[43][0], &fxNames[44][0], &fxNames[45][0], &fxNames[46][0], &fxNames[47][0]
     };
 
     static constexpr const char* ptrAllFxNamesShort[FX_COUNT + 1] = {
@@ -589,7 +592,8 @@ class InterfaceGlobals
         &fxShortNames[43][0],
         &fxShortNames[44][0],
         &fxShortNames[45][0],
-        &fxShortNames[46][0]
+        &fxShortNames[46][0],
+        &fxShortNames[47][0]
     };
 
     static constexpr const char* const* ptrFxNames = &ptrAllFxNames[1];

@@ -40,6 +40,7 @@ AUDIO_CORE_RAM void playerEngine::seqFx(uint8_t fx_id, uint8_t fx_val, uint8_t f
         case Sequencer::strFxConsts::FX_TYPE_DELAY_SEND: fxDelaySend(fx_val, fx_n); break;
         case Sequencer::strFxConsts::FX_TYPE_DELAY_TIME: fxDelayTime(fx_val, fx_n); break;
         case Sequencer::strFxConsts::FX_TYPE_REVERB_SEND: fxReverbSend(fx_val, fx_n); break;
+        case Sequencer::strFxConsts::FX_TYPE_CHANCE: fxChance(fx_val, fx_n); break;
         case Sequencer::strFxConsts::FX_TYPE_REVERSE_PLAYBACK:
             fxReversePlayback(fx_val, fx_n);
             break;
@@ -101,6 +102,7 @@ AUDIO_CORE_RAM void playerEngine::endFx(uint8_t fx_id, uint8_t fx_n)
         case Sequencer::strFxConsts::FX_TYPE_DELAY_SEND: endFxDelaySend(fx_n); break;
         case Sequencer::strFxConsts::FX_TYPE_DELAY_TIME: endFxDelayTime(fx_n); break;
         case Sequencer::strFxConsts::FX_TYPE_REVERB_SEND: endFxReverbSend(fx_n); break;
+        case Sequencer::strFxConsts::FX_TYPE_CHANCE: break;
         case Sequencer::strFxConsts::FX_TYPE_REVERSE_PLAYBACK: endFxReversePlayback(fx_n); break;
         case Sequencer::strFxConsts::FX_TYPE_OVERDRIVE: endFxOverdrive(fx_n); break;
         case Sequencer::strFxConsts::FX_TYPE_TUNE: endFxTune(fx_n); break;
@@ -334,6 +336,16 @@ void playerEngine::fxReverbSend(uint8_t fx_val, uint8_t fx_n)
       1;
 
     setRefreshBit(REVERB_SEND_MASK);
+}
+
+void playerEngine::fxChance(uint8_t fx_val, uint8_t fx_n)
+{
+    // Store chance value (0-255 = 0-100% probability)
+    // This value is checked when applying FX1 and FX2
+    if (fx_n == MOST_SIGNIFICANT_FX)
+    {
+        currentSeqModValues.chanceValue = fx_val;
+    }
 }
 
 void playerEngine::fxDelayTime(uint8_t fx_val, uint8_t fx_n)

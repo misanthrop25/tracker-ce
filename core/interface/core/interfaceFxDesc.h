@@ -207,6 +207,11 @@ const char* const fxDescriptions[FX_COUNT] = {
     "\n"
     "\n"
     "From 0% to 100%.",
+    // Sequencer::strFxConsts::enFxType::FX_TYPE_CHANCE,
+    "Destination: Master \n\nProbabilistic gate for FX1 & FX2."
+    "\n"
+    "\n"
+    "0-255: 0% to 100% chance to apply effects.",
     // Sequencer::strFxConsts::enFxType::FX_TYPE_BIT_DEPTH,
     "Destination: Sample \n"
     "\n"
@@ -505,6 +510,11 @@ const char* const fxDescriptions[FX_COUNT] = {
     "\n"
     "\n"
     "From 0% to 100%.",
+    // Sequencer::strFxConsts::enFxType::FX_TYPE_CHANCE,
+    "Destination: Master \n\nProbabilistic gate for FX1 & FX2."
+    "\n"
+    "\n"
+    "0-255: 0% to 100% chance to apply effects.",
     // Sequencer::strFxConsts::enFxType::FX_TYPE_BIT_DEPTH,
     "Destination: Sample \n\nSets the bit depth."
     "\n"

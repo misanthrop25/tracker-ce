@@ -421,6 +421,7 @@ class playerEngine
         uint8_t delaySend;
         uint16_t delayTime;
         uint8_t reverbSend;
+        uint8_t chanceValue;
         int16_t panning;
         uint8_t overdrive;
         uint8_t bitDepth;
@@ -712,6 +713,7 @@ class playerEngine
     void fxBitDepth(uint8_t fx_val, uint8_t fx_n);
     void fxDelaySend(uint8_t fx_val, uint8_t fx_n);
     void fxDelayTime(uint8_t fx_val, uint8_t fx_n);
+    void fxChance(uint8_t fx_val, uint8_t fx_n);
     void fxReverbSend(uint8_t fx_val, uint8_t fx_n);
     void fxOverdrive(uint8_t fx_val, uint8_t fx_n);
     void fxReversePlayback(uint8_t fx_val, uint8_t fx_n);

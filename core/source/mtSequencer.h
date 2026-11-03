@@ -160,6 +160,7 @@ class Sequencer
             FX_TYPE_DELAY_TIME,
             FX_TYPE_PANNING,
             FX_TYPE_REVERB_SEND,
+            FX_TYPE_CHANCE,
             FX_TYPE_FINETUNE_LFO,
             FX_TYPE_MICROTUNING,
             FX_TYPE_FILTER_LFO,
