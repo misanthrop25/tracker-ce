@@ -392,6 +392,7 @@ class InterfaceGlobals
         Sequencer::strFxConsts::enFxType::FX_TYPE_FILTER_BANDPASS,
         Sequencer::strFxConsts::enFxType::FX_TYPE_FILTER_HIGHPASS,
         Sequencer::strFxConsts::enFxType::FX_TYPE_DELAY_SEND,
+        Sequencer::strFxConsts::enFxType::FX_TYPE_DELAY_TIME,
         Sequencer::strFxConsts::enFxType::FX_TYPE_REVERB_SEND,
         Sequencer::strFxConsts::enFxType::FX_TYPE_BIT_DEPTH,
         Sequencer::strFxConsts::enFxType::FX_TYPE_TUNE,
