@@ -197,6 +197,11 @@ const char* const fxDescriptions[FX_COUNT] = {
     "\n"
     "\n"
     "From 0% to 100%.",
+    // Sequencer::strFxConsts::enFxType::FX_TYPE_DELAY_TIME,
+    "Destination: Master \n\nSets the Delay Time modulation value."
+    "\n"
+    "\n"
+    "From 10ms to 1000ms.",
     // Sequencer::strFxConsts::enFxType::FX_TYPE_REVERB_SEND,
     "Destination: Sample, Synth \n\nSets the amount of Reverb send."
     "\n"
@@ -490,6 +495,11 @@ const char* const fxDescriptions[FX_COUNT] = {
     "\n"
     "\n"
     "From 0% to 100%.",
+    // Sequencer::strFxConsts::enFxType::FX_TYPE_DELAY_TIME,
+    "Destination: Master \n\nSets the Delay Time modulation value."
+    "\n"
+    "\n"
+    "From 10ms to 1000ms.",
     // Sequencer::strFxConsts::enFxType::FX_TYPE_REVERB_SEND,
     "Destination: Sample \n\nSets the amount of Reverb send."
     "\n"
