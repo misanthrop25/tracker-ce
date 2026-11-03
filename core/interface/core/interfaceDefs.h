@@ -499,6 +499,7 @@ class InterfaceGlobals
                                                                        "Band-pass",
                                                                        "High-pass",
                                                                        "Delay Send",
+                                                                       "Delay Time",
                                                                        "Reverb Send",
                                                                        "Bit Depth",
                                                                        "Tune",
